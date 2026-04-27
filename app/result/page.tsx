@@ -41,11 +41,12 @@ export default function Result() {
   )
 
   const f = data.freeOutput
-  const riskConfig = {
+  const riskMap: Record<string, { color: string; bg: string; label: string }> = {
     reject: { color: '#f87171', bg: '#2a1a1a', label: '❌ High Risk of Rejection' },
     improve: { color: '#fbbf24', bg: '#2a2010', label: '⚠️ Needs Improvement' },
     strong: { color: '#4ade80', bg: '#0f2a1a', label: '✅ Strong Profile' }
-  }[f.risk_level] || { color: '#888', bg: '#1a1a1a', label: f.risk_level }
+  }
+  const riskConfig = riskMap[f.risk_level] || { color: '#888', bg: '#1a1a1a', label: f.risk_level }
 
   const scoreColor = f.score >= 70 ? '#4ade80' : f.score >= 40 ? '#fbbf24' : '#f87171'
 
