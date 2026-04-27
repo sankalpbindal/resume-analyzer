@@ -1,9 +1,10 @@
 export default function FreeOutput({ data }: { data: any }) {
-  const riskColor = {
+  const riskMap: Record<string, string> = {
     reject: '#dc2626',
     improve: '#d97706',
     strong: '#16a34a'
-  }[data.risk_level] || '#000'
+  }
+  const riskColor = riskMap[data.risk_level] || '#000'
 
   return (
     <div style={{ fontFamily: 'sans-serif' }}>
